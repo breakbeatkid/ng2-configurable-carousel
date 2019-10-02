@@ -9,11 +9,12 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
   ]
 })
 export class AlertComponent implements OnInit, OnChanges {
+  @Input() iconEnabled: boolean;
   @Input() icon: string;
   @Input() message: string;
   @Input() tooltipMessage: string;
   @Input() colour: string;
-  @Input() tooltip: boolean;
+  @Input() tooltipEnabled: boolean;
   @Input() messageSize: string;
   defaultMessage = true;
 
@@ -31,6 +32,10 @@ export class AlertComponent implements OnInit, OnChanges {
   }
 
   private setDefaults() {
+    if (this.iconEnabled == null) {
+      this.iconEnabled = true;
+    }
+
     if (this.icon == null || this.icon === '') {
       this.icon = 'report';
     }
@@ -47,8 +52,8 @@ export class AlertComponent implements OnInit, OnChanges {
       this.colour = 'orange';
     }
 
-    if (this.tooltip == null) {
-      this.tooltip = true;
+    if (this.tooltipEnabled == null) {
+      this.tooltipEnabled = true;
     }
 
     if (this.messageSize == null || this.messageSize === '') {

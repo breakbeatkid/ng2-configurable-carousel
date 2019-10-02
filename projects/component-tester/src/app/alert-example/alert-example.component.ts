@@ -6,12 +6,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./alert-example.component.scss']
 })
 export class AlertExampleComponent implements OnInit {
+  iconEnabled = true;
   icon: string;
-  message: string;
-  tooltipMessage: string;
   colour: string;
-  tooltip = true;
+
+  message: string;
   messageSize: string;
+
+  tooltip = true;
+  tooltipMessage: string;
 
   constructor() { }
 

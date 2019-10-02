@@ -6,44 +6,80 @@
   <div class="component">
     <div class="title">Component:</div>
     <crowder-alert
+      [iconEnabled]="iconEnabled"
       [icon]="icon"
       [message]="message"
       [tooltipMessage]="tooltipMessage"
       [colour]="colour"
-      [tooltip]="tooltip"
+      [tooltipEnabled]="tooltip"
       [messageSize]="messageSize"
     ></crowder-alert>
   </div>
 
   <div class="controls">
     <div class="title">Configuration:</div>
+
     <div class="control">
-      <label>Icon:</label>
+      <label>Icon enabled:</label>
+      <div>
+        <label class="radio">True:</label>
+        <input
+          type="radio"
+          [(ngModel)]="iconEnabled"
+          name="iconEnabled"
+          [value]="true"
+        />
+        <label class="radio">False:</label>
+        <input
+          type="radio"
+          [(ngModel)]="iconEnabled"
+          name="iconDisabled"
+          [value]="false"
+        />
+      </div>
+    </div>
+
+    <div class="control" *ngIf="iconEnabled">
+      <label>Icon type:</label>
       <input type="text" [(ngModel)]="icon" />
     </div>
-    <div class="control">
-      <label>Icon Colour:</label>
+
+    <div class="control" *ngIf="iconEnabled">
+      <label>Icon colour:</label>
       <input type="text" [(ngModel)]="colour" />
     </div>
+
     <div class="control">
       <label>Message:</label>
       <input type="text" [(ngModel)]="message" />
     </div>
+
     <div class="control">
       <label>Message size:</label>
       <input type="text" [(ngModel)]="messageSize" />
     </div>
+
     <div class="control">
-      <label>Tooltip:</label>
-      <!-- <input type="text" [(ngModel)]="tooltip" /> -->
+      <label>Tooltip enabled:</label>
       <div>
-        <label>True:</label>
-        <input type="radio" [(ngModel)]="tooltip" [value]="true" />
-        <label>False:</label>
-        <input type="radio" [(ngModel)]="tooltip" [value]="false" />
+        <label class="radio">True:</label>
+        <input
+          type="radio"
+          [(ngModel)]="tooltip"
+          name="tooltipEnabled"
+          [value]="true"
+        />
+        <label class="radio">False:</label>
+        <input
+          type="radio"
+          [(ngModel)]="tooltip"
+          name="tooltipDisabled"
+          [value]="false"
+        />
       </div>
     </div>
-    <div class="control">
+
+    <div class="control" *ngIf="tooltip">
       <label>Tooltip Message:</label>
       <input type="text" [(ngModel)]="tooltipMessage" />
     </div>
@@ -54,6 +90,9 @@
     <div class="code">
       <code>
         &lt;crowder-alert
+        <div *ngIf="iconEnabled === false">
+          &nbsp;&nbsp;[iconEnabled]='{{ iconEnabled }}'
+        </div>
         <div *ngIf="icon != null && icon != ''">
           &nbsp;&nbsp;[icon]='{{ icon }}'
         </div>
