@@ -1,6 +1,6 @@
 .icon {
   position: relative;
-  margin-right: 4px;
+  margin: inherit 4px;
   top: 4px;
 
   &.custom {
@@ -16,7 +16,6 @@
   font-weight: 400;
   letter-spacing: normal;
   text-transform: inherit;
-  color: grey;
 
   &.custom {
     font-size: 16px;

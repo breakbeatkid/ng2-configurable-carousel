@@ -5,14 +5,17 @@
 <div class="example">
   <div class="component">
     <div class="title">Component:</div>
-    <crowder-alert class='alert'
+    <crowder-alert
+      class="alert"
       [iconEnabled]="iconEnabled"
-      [icon]="icon"
+      [iconType]="iconType"
+      [iconColour]="iconColour"
+      [iconAfterMessage]="iconAfterMessage"
       [message]="message"
-      [tooltipMessage]="tooltipMessage"
-      [colour]="colour"
-      [tooltipEnabled]="tooltip"
       [messageSize]="messageSize"
+      [messageColour]="messageColour"
+      [tooltipMessage]="tooltipMessage"
+      [tooltipEnabled]="tooltipEnabled"
     ></crowder-alert>
   </div>
 
@@ -41,13 +44,35 @@
 
     <div class="control" *ngIf="iconEnabled">
       <label>Icon type:</label>
-      <input type="text" [(ngModel)]="icon" />
+      <input type="text" [(ngModel)]="iconType" />
     </div>
 
     <div class="control" *ngIf="iconEnabled">
       <label>Icon colour:</label>
-      <input type="text" [(ngModel)]="colour" />
+      <input type="text" [(ngModel)]="iconColour" />
     </div>
+
+    <div class="control" *ngIf="iconEnabled">
+      <label>Icon position:</label>
+      <div>
+        <label class="radio">Before:</label>
+        <input
+          type="radio"
+          [(ngModel)]="iconAfterMessage"
+          name="iconBeforeMessage"
+          [value]="false"
+        />
+        <label class="radio">After:</label>
+        <input
+          type="radio"
+          [(ngModel)]="iconAfterMessage"
+          name="iconAfterMessage"
+          [value]="true"
+        />
+      </div>
+    </div>
+
+    <div class="divider"></div>
 
     <div class="control">
       <label>Message:</label>
@@ -60,26 +85,33 @@
     </div>
 
     <div class="control">
+      <label>Message colour:</label>
+      <input type="text" [(ngModel)]="messageColour" />
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control">
       <label>Tooltip enabled:</label>
       <div>
         <label class="radio">True:</label>
         <input
           type="radio"
-          [(ngModel)]="tooltip"
+          [(ngModel)]="tooltipEnabled"
           name="tooltipEnabled"
           [value]="true"
         />
         <label class="radio">False:</label>
         <input
           type="radio"
-          [(ngModel)]="tooltip"
+          [(ngModel)]="tooltipEnabled"
           name="tooltipDisabled"
           [value]="false"
         />
       </div>
     </div>
 
-    <div class="control" *ngIf="tooltip">
+    <div class="control" *ngIf="tooltipEnabled">
       <label>Tooltip Message:</label>
       <input type="text" [(ngModel)]="tooltipMessage" />
     </div>
@@ -90,14 +122,17 @@
     <div class="code">
       <code>
         &lt;crowder-alert
-        <div *ngIf="iconEnabled === false">
-          &nbsp;&nbsp;[iconEnabled]='{{ iconEnabled }}'
+        <div *ngIf="!iconEnabled">
+          &nbsp;&nbsp;[iconEnabled]={{ iconEnabled }}
         </div>
-        <div *ngIf="iconEnabled !== false && icon != null && icon != ''">
-          &nbsp;&nbsp;[icon]='{{ icon }}'
+        <div *ngIf="iconEnabled && iconType != null && iconType != ''">
+          &nbsp;&nbsp;[iconType]='{{ iconType }}'
         </div>
-        <div *ngIf="iconEnabled !== false && colour != null && colour != ''">
-          &nbsp;&nbsp;[colour]='{{ colour }}'
+        <div *ngIf="iconEnabled && iconColour != null && iconColour != ''">
+          &nbsp;&nbsp;[iconColour]='{{ iconColour }}'
+        </div>
+        <div *ngIf="iconEnabled && iconAfterMessage">
+          &nbsp;&nbsp;[iconAfterMessage]={{ iconAfterMessage }}
         </div>
         <div *ngIf="message != null && message != ''">
           &nbsp;&nbsp;[message]='{{ message }}'
@@ -105,10 +140,13 @@
         <div *ngIf="messageSize != null && messageSize != ''">
           &nbsp;&nbsp;[messageSize]='{{ messageSize }}'
         </div>
-        <div *ngIf="tooltip === false">
-          &nbsp;&nbsp;[tooltip]='{{ tooltip }}'
+        <div *ngIf="messageColour != null && messageColour != ''">
+          &nbsp;&nbsp;[messageColour]='{{ messageColour }}'
         </div>
-        <div *ngIf="tooltip !== false && tooltipMessage != null && tooltipMessage != ''">
+        <div *ngIf="!tooltipEnabled">
+          &nbsp;&nbsp;[tooltipEnabled]={{ tooltipEnabled }}
+        </div>
+        <div *ngIf="tooltipEnabled && tooltipMessage != null && tooltipMessage != ''">
           &nbsp;&nbsp;[tooltipMessage]='{{ tooltipMessage }}'
         </div>
         &gt;<br />&lt;/crowder-alert&gt;

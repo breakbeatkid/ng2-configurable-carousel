@@ -49,7 +49,7 @@
       input[type=text] {
         font-size: 12px;
         line-height: 14px;
-        width: 200px;
+        width: 250px;
         color: grey;
         display: block;
       }
@@ -57,6 +57,12 @@
       input[type=radio] {
         margin: 8px 20px;
       }
+    }
+
+    .divider {
+      // display: block;
+      border-bottom: 1px solid lightgrey;
+      margin: 20px auto 10px;
     }
   }
 

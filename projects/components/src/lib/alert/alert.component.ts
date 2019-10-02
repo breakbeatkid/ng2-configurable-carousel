@@ -10,12 +10,15 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 })
 export class AlertComponent implements OnInit, OnChanges {
   @Input() iconEnabled: boolean;
-  @Input() icon: string;
+  @Input() iconType: string;
+  @Input() iconColour: string;
+  @Input() iconAfterMessage: boolean;
   @Input() message: string;
-  @Input() tooltipMessage: string;
-  @Input() colour: string;
-  @Input() tooltipEnabled: boolean;
+  @Input() messageColour: string;
   @Input() messageSize: string;
+  @Input() tooltipMessage: string;
+  @Input() tooltipEnabled: boolean;
+
   defaultMessage = true;
 
   constructor() { }
@@ -36,20 +39,28 @@ export class AlertComponent implements OnInit, OnChanges {
       this.iconEnabled = true;
     }
 
-    if (this.icon == null || this.icon === '') {
-      this.icon = 'report';
+    if (this.iconType == null || this.iconType === '') {
+      this.iconType = 'report';
+    }
+
+    if (this.iconAfterMessage == null) {
+      this.iconAfterMessage = false;
     }
 
     if (this.message == null || this.message === '') {
       this.message = 'N/A';
     }
 
+    if (this.messageColour == null || this.messageColour === '') {
+      this.messageColour = 'gray';
+    }
+
     if (this.tooltipMessage == null || this.tooltipMessage === '') {
       this.tooltipMessage = 'Insufficient data to render';
     }
 
-    if (this.colour == null || this.colour === '') {
-      this.colour = 'orange';
+    if (this.iconColour == null || this.iconColour === '') {
+      this.iconColour = 'orange';
     }
 
     if (this.tooltipEnabled == null) {

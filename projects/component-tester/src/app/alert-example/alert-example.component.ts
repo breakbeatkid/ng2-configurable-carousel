@@ -7,13 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AlertExampleComponent implements OnInit {
   iconEnabled = true;
-  icon: string;
-  colour: string;
+  iconType: string;
+  iconColour: string;
+  iconAfterMessage = false;
 
   message: string;
   messageSize: string;
 
-  tooltip = true;
+  tooltipEnabled = true;
   tooltipMessage: string;
 
   constructor() { }
