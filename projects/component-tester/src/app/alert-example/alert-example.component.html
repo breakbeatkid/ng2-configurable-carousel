@@ -5,7 +5,7 @@
 <div class="example">
   <div class="component">
     <div class="title">Component:</div>
-    <crowder-alert
+    <crowder-alert class='alert'
       [iconEnabled]="iconEnabled"
       [icon]="icon"
       [message]="message"
@@ -93,10 +93,10 @@
         <div *ngIf="iconEnabled === false">
           &nbsp;&nbsp;[iconEnabled]='{{ iconEnabled }}'
         </div>
-        <div *ngIf="icon != null && icon != ''">
+        <div *ngIf="iconEnabled !== false && icon != null && icon != ''">
           &nbsp;&nbsp;[icon]='{{ icon }}'
         </div>
-        <div *ngIf="colour != null && colour != ''">
+        <div *ngIf="iconEnabled !== false && colour != null && colour != ''">
           &nbsp;&nbsp;[colour]='{{ colour }}'
         </div>
         <div *ngIf="message != null && message != ''">
@@ -108,7 +108,7 @@
         <div *ngIf="tooltip === false">
           &nbsp;&nbsp;[tooltip]='{{ tooltip }}'
         </div>
-        <div *ngIf="tooltipMessage != null && tooltipMessage != ''">
+        <div *ngIf="tooltip !== false && tooltipMessage != null && tooltipMessage != ''">
           &nbsp;&nbsp;[tooltipMessage]='{{ tooltipMessage }}'
         </div>
         &gt;<br />&lt;/crowder-alert&gt;
