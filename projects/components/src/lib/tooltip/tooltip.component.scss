@@ -1,0 +1,39 @@
+:host {
+  display: inline;
+}
+
+.tooltip {
+  position: relative;
+  line-height: normal;
+
+  .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 4px;
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    z-index: 1000;
+    font-size: small;
+    transform: translateX(-50%);
+
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      border-width: 4px;
+      border-style: solid;
+      border-color: transparent transparent black transparent;
+      transform: translateX(-50%);
+    }
+  }
+
+  &:hover .tooltiptext {
+    visibility: visible;
+  }
+}

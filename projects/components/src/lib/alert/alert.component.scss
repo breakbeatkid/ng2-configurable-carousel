@@ -1,0 +1,24 @@
+.icon {
+  position: relative;
+  margin-right: 4px;
+  top: 4px;
+
+  &.custom {
+    top: 6px;
+  }
+}
+
+.message {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: inherit;
+  color: grey;
+
+  &.custom {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,88 @@
+$nav-height: 50px;
+$panel-height: 300px;
+
+$crowder-brand: #f58220;
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $nav-height;
+  z-index: 2;
+  background-color: $crowder-brand;
+  display: flex;
+
+  .title {
+    background-color: rgba(0, 0, 0, 1);
+    color: $crowder-brand;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: 100;
+    .brand {
+      font-weight: 600;
+    }
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  a:focus {
+    outline: none;
+  }
+
+  .active {
+    background-color: black;
+    color: $crowder-brand;
+    ;
+  }
+}
+
+.outlet {
+  position: relative;
+  top: $nav-height;
+  height: 100%;
+  padding: 20px;
+  margin: 20px;
+}
+
+.example {
+  padding: 50px 0px 50px 0px;
+  border-bottom: 5px dashed $crowder-brand;
+  display: flex;
+  flex-direction: column;
+
+  .under-test {
+    align-self: center;
+    height: $panel-height;
+  }
+
+  .standard {
+    width: 700px;
+  }
+
+  .fullsize {
+    width: 100%;
+  }
+
+  .halfsize {
+    width: 50%;
+  }
+
+  .quartersize {
+    width: 25%;
+  }
+
+  .smaller {
+    width: 12.5%;
+  }
+}

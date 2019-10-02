@@ -1,0 +1,78 @@
+.example {
+  display: flex;
+
+  .component {
+    width: 250px;
+    height: 100px;
+
+    .title {
+      margin-bottom: 32px;
+    }
+
+    crowder-alert {
+      position: relative;
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      text-align: center;
+    }
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    margin: 4px;
+  }
+
+  .controls {
+    display: inline;
+
+    .control {
+      margin: 4px;
+      position: relative;
+      top: 0;
+      left: 0;
+
+      label {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      input[type=text] {
+        font-size: 12px;
+        line-height: 14px;
+        width: 200px;
+        color: grey;
+        display: block;
+      }
+
+      input[type=radio] {
+        margin: 0px 20px;
+      }
+    }
+  }
+
+  .usage {
+    margin-left: 64px;
+
+    .code {
+      margin-top: 16px;
+      background-color: #eeeeee;
+      box-shadow: 3px 3px #dddddd;
+      position: relative;
+      top: 0;
+      right: 0;
+      padding: 16px;
+      min-width: 300px;
+
+      code {
+        div {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+}

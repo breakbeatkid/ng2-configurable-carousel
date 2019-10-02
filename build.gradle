@@ -1,0 +1,1 @@
+apply from: "$repository/uk/co/crowderconsult/platform-build/web-component-build/0.0.1/web-component-build-0.0.1.gradle"

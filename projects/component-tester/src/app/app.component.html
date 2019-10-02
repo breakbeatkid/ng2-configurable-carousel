@@ -1,0 +1,11 @@
+<nav>
+  <a routerLink="/alert" routerLinkActive="active">Alert</a>
+  <a routerLink="/tooltip" routerLinkActive="active">Tooltip</a>
+  <a routerLink="/carousel" routerLinkActive="active">Carousel</a>
+  <div class="spacer"></div>
+  <div class="title"><span class='brand'>NDSP</span> / {{ title }}</div>
+</nav>
+
+<div class="outlet" *ngIf="shown">
+  <router-outlet></router-outlet>
+</div>
