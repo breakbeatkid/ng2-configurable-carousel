@@ -1,1 +1,62 @@
-<p>tooltip-example works!</p>
+<h2>
+  Tooltip
+</h2>
+
+<div class="example">
+  <div class="component">
+    <div class="title">Component:</div>
+    <crowder-tooltip
+      class="tooltip"
+      [tooltipBackgroundColour]="tooltipBackgroundColour"
+      [tooltipTextColour]="tooltipTextColour"
+    >
+      <span content>{{ content }}</span>
+      <span tooltiptext>{{ tooltiptext }}</span>
+    </crowder-tooltip>
+  </div>
+
+  <div class="controls">
+    <div class="title">Configuration:</div>
+
+    <div class="control">
+      <label>Main content:</label>
+      <input type="text" [(ngModel)]="content" />
+    </div>
+
+    <div class="control">
+      <label>Tooltip content:</label>
+      <input type="text" [(ngModel)]="tooltiptext" />
+    </div>
+
+    <div class="control">
+      <label>Tooltip background colour:</label>
+      <input type="text" [(ngModel)]="tooltipBackgroundColour" />
+    </div>
+
+    <div class="control">
+      <label>Tooltip text colour:</label>
+      <input type="text" [(ngModel)]="tooltipTextColour" />
+    </div>
+  </div>
+
+  <div class="usage">
+    <div class="title">Usage:</div>
+    <div class="code">
+      <code>
+        &lt;crowder-alert
+        <div *ngIf="tooltipTextColour != null && tooltipTextColour != ''">
+          &nbsp;&nbsp;[tooltipTextColour]='{{ tooltipTextColour }}'
+        </div>
+        <div *ngIf="tooltipBackgroundColour != null && tooltipBackgroundColour != ''">
+          &nbsp;&nbsp;[tooltipBackgroundColour]='{{ tooltipBackgroundColour }}'
+        </div>
+        &gt;
+        <div>&nbsp;&nbsp;&lt;span content&gt;{{ content }}&lt;/span&gt;</div>
+        <div>
+          &nbsp;&nbsp;&lt;span tooltiptext&gt;{{ tooltiptext }}&lt;/span&gt;
+        </div>
+        <div>&lt;/crowder-alert&gt;</div>
+      </code>
+    </div>
+  </div>
+</div>

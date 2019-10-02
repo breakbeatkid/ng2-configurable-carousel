@@ -8,11 +8,12 @@
 
   .tooltiptext {
     visibility: hidden;
-    width: 180px;
-    background-color: black;
-    color: #fff;
+    // white-space: nowrap;
+    min-width: 100px;
+    max-width: 250px;
+    border: 2px solid black;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 4px 8px;
     padding: 4px;
     position: absolute;
     top: 150%;
@@ -26,7 +27,7 @@
       position: absolute;
       bottom: 100%;
       left: 50%;
-      border-width: 4px;
+      border-width: 6px;
       border-style: solid;
       border-color: transparent transparent black transparent;
       transform: translateX(-50%);

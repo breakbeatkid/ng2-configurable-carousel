@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tooltip-example.component.scss']
 })
 export class TooltipExampleComponent implements OnInit {
+  content = 'Main content';
+  tooltiptext = 'Tooltip content';
+  tooltipBackgroundColour: string;
+  tooltipTextColour: string;
 
   constructor() { }
 

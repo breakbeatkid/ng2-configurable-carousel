@@ -1,6 +1,6 @@
 <div class="tooltip">
   <ng-content select="[content]"></ng-content>
-  <div class="tooltiptext">
+  <div class="tooltiptext" [style.color]=tooltipTextColour [style.background-color]=tooltipBackgroundColour>
     <ng-content select="[tooltiptext]"></ng-content>
   </div>
 </div>
