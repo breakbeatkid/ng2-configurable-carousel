@@ -1,5 +1,4 @@
-import { Component, Input, HostBinding } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'crowder-tooltip',
@@ -7,11 +6,5 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent {
-  @Input() pointerPosition: number;
-  constructor(private readonly sanitizer: DomSanitizer) { }
-
-  @HostBinding('attr.style')
-  public get valueAsStyle(): any {
-    return this.sanitizer.bypassSecurityTrustStyle(`.tooltip::after {left: ${this.pointerPosition}}`);
-  }
+  constructor() { }
 }
