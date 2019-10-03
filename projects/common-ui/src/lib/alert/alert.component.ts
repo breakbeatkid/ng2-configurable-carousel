@@ -16,8 +16,11 @@ export class AlertComponent implements OnInit, OnChanges {
   @Input() message: string;
   @Input() messageColour: string;
   @Input() messageSize: string;
-  @Input() tooltipMessage: string;
   @Input() tooltipEnabled: boolean;
+  @Input() tooltipMessage: string;
+  @Input() tooltipBackgroundColour: string;
+  @Input() tooltipTextColour: string;
+  @Input() tooltipTextSize: string;
 
   defaultMessage = true;
 
@@ -43,6 +46,10 @@ export class AlertComponent implements OnInit, OnChanges {
       this.iconType = 'report';
     }
 
+    if (this.iconColour == null || this.iconColour === '') {
+      this.iconColour = 'orange';
+    }
+
     if (this.iconAfterMessage == null) {
       this.iconAfterMessage = false;
     }
@@ -51,24 +58,32 @@ export class AlertComponent implements OnInit, OnChanges {
       this.message = 'N/A';
     }
 
+    if (this.messageSize == null || this.messageSize === '') {
+      this.messageSize = '1.5rem';
+    }
+
     if (this.messageColour == null || this.messageColour === '') {
       this.messageColour = 'gray';
-    }
-
-    if (this.tooltipMessage == null || this.tooltipMessage === '') {
-      this.tooltipMessage = 'Insufficient data to render';
-    }
-
-    if (this.iconColour == null || this.iconColour === '') {
-      this.iconColour = 'orange';
     }
 
     if (this.tooltipEnabled == null) {
       this.tooltipEnabled = true;
     }
 
-    if (this.messageSize == null || this.messageSize === '') {
-      this.messageSize = '1.5rem';
+    if (this.tooltipMessage == null || this.tooltipMessage === '') {
+      this.tooltipMessage = 'Insufficient data to render';
+    }
+
+    if (this.tooltipBackgroundColour == null || this.tooltipBackgroundColour === '') {
+      this.tooltipBackgroundColour = 'inherit';
+    }
+
+    if (this.tooltipTextColour == null || this.tooltipTextColour === '') {
+      this.tooltipTextColour = 'inherit';
+    }
+
+    if (this.tooltipTextSize == null || this.tooltipTextSize === '') {
+      this.tooltipTextSize = 'small';
     }
   }
 }

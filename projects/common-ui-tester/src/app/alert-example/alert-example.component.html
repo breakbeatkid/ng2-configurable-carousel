@@ -14,8 +14,11 @@
       [message]="message"
       [messageSize]="messageSize"
       [messageColour]="messageColour"
-      [tooltipMessage]="tooltipMessage"
       [tooltipEnabled]="tooltipEnabled"
+      [tooltipMessage]="tooltipMessage"
+      [tooltipTextSize]="tooltipTextSize"
+      [tooltipTextColour]="tooltipTextColour"
+      [tooltipBackgroundColour]="tooltipBackgroundColour"
     ></crowder-alert>
   </div>
 
@@ -75,7 +78,7 @@
     <div class="divider"></div>
 
     <div class="control">
-      <label>Message:</label>
+      <label>Message text:</label>
       <input type="text" [(ngModel)]="message" />
     </div>
 
@@ -112,8 +115,23 @@
     </div>
 
     <div class="control" *ngIf="tooltipEnabled">
-      <label>Tooltip Message:</label>
+      <label>Tooltip text:</label>
       <input type="text" [(ngModel)]="tooltipMessage" />
+    </div>
+
+    <div class="control" *ngIf="tooltipEnabled">
+      <label>Tooltip text size:</label>
+      <input type="text" [(ngModel)]="tooltipTextSize" />
+    </div>
+
+    <div class="control" *ngIf="tooltipEnabled">
+      <label>Tooltip text colour:</label>
+      <input type="text" [(ngModel)]="tooltipTextColour" />
+    </div>
+
+    <div class="control" *ngIf="tooltipEnabled">
+      <label>Tooltip background colour:</label>
+      <input type="text" [(ngModel)]="tooltipBackgroundColour" />
     </div>
   </div>
 
@@ -166,6 +184,21 @@
           <span class='param'>&nbsp;&nbsp;[tooltipMessage]</span>
           =
           <span class='var'>'{{ tooltipMessage }}'</span>
+        </div>
+        <div *ngIf="tooltipEnabled && tooltipTextSize != null && tooltipTextSize != ''">
+          <span class='param'>&nbsp;&nbsp;[tooltipTextSize]</span>
+          =
+          <span class='var'>'{{ tooltipTextSize }}'</span>
+        </div>
+        <div *ngIf="tooltipEnabled && tooltipTextColour != null && tooltipTextColour != ''">
+          <span class='param'>&nbsp;&nbsp;[tooltipTextColour]</span>
+          =
+          <span class='var'>'{{ tooltipTextColour }}'</span>
+        </div>
+        <div *ngIf="tooltipEnabled && tooltipBackgroundColour != null && tooltipBackgroundColour != ''">
+          <span class='param'>&nbsp;&nbsp;[tooltipBackgroundColour]</span>
+          =
+          <span class='var'>'{{ tooltipBackgroundColour }}'</span>
         </div>
         <span class='bracket'>&gt;</span>
         <div>

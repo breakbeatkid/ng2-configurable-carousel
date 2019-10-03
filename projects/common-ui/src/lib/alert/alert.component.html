@@ -1,28 +1,38 @@
-<crowder-tooltip *ngIf="tooltipEnabled">
+<crowder-tooltip
+  *ngIf="tooltipEnabled"
+  [tooltipTextColour]='tooltipTextColour'
+  [tooltipTextSize]='tooltipTextSize'
+  [tooltipBackgroundColour]='tooltipBackgroundColour'
+>
   <span content>
     <mdc-icon
       *ngIf="!iconAfterMessage && iconEnabled"
       class="icon"
       [class.custom]="!defaultMessage"
       [style.color]="iconColour"
-      >{{ iconType }}</mdc-icon
     >
+      {{ iconType }}
+    </mdc-icon>
     <span
       class="message"
       [class.custom]="!defaultMessage"
       [style.font-size]="messageSize"
       [style.color]="messageColour"
-      >{{ message }}</span
     >
+      {{ message }}
+    </span>
     <mdc-icon
       *ngIf="iconAfterMessage && iconEnabled"
       class="icon"
       [class.custom]="!defaultMessage"
       [style.color]="iconColour"
-      >{{ iconType }}</mdc-icon
     >
+      {{ iconType }}
+    </mdc-icon>
   </span>
-  <span tooltiptext>{{ tooltipMessage }}</span>
+  <span tooltiptext>
+    {{ tooltipMessage }}
+  </span>
 </crowder-tooltip>
 
 <span *ngIf="!tooltipEnabled">
@@ -31,20 +41,23 @@
     class="icon"
     [class.custom]="!defaultMessage"
     [style.color]="iconColour"
-    >{{ iconType }}</mdc-icon
   >
+    {{ iconType }}
+  </mdc-icon>
   <span
     class="message"
     [class.custom]="!defaultMessage"
     [style.font-size]="messageSize"
     [style.color]="messageColour"
-    >{{ message }}</span
   >
+    {{ message }}
+  </span>
   <mdc-icon
     *ngIf="iconAfterMessage && iconEnabled"
     class="icon"
     [class.custom]="!defaultMessage"
     [style.color]="iconColour"
-    >{{ iconType }}</mdc-icon
   >
+    {{ iconType }}
+  </mdc-icon>
 </span>

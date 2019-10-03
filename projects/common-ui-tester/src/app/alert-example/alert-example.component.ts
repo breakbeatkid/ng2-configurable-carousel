@@ -16,6 +16,9 @@ export class AlertExampleComponent implements OnInit {
 
   tooltipEnabled = true;
   tooltipMessage: string;
+  tooltipTextSize: string;
+  tooltipTextColour: string;
+  tooltipBackgroundColour: string;
 
   constructor() { }
 
