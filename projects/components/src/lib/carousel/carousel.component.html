@@ -1,1 +1,9 @@
-<p>carousel works!</p>
+<section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+  <ul class="carousel-inner" #carousel>
+    <li *ngFor="let item of items" class="carousel-item">
+      <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+    </li>
+  </ul>
+</section>
+<div class="carousel__prev-button" (click)='prev()'>&lt;</div>
+<div class="carousel__next-button" (click)='next()'>&gt;</div>
