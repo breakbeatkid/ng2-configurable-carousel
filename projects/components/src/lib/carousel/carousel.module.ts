@@ -10,6 +10,6 @@ import { CarouselItemElementDirective } from './carousel-item-element.directive'
 @NgModule({
   declarations: [ CarouselComponent, CarouselItemDirective, CarouselItemElementDirective ],
   imports: [ BrowserModule, BrowserAnimationsModule, CommonModule, FormsModule ],
-  exports: [ CarouselComponent ]
+  exports: [ CarouselComponent, CarouselItemDirective, CarouselItemElementDirective ]
 })
 export class CarouselModule { }

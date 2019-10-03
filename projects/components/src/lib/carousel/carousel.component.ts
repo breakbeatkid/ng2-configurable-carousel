@@ -22,7 +22,7 @@ import { CarouselItemDirective } from './carousel-item.directive';
 import { CarouselItemElementDirective } from './carousel-item-element.directive';
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'crowder-carousel',
   exportAs: 'carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
