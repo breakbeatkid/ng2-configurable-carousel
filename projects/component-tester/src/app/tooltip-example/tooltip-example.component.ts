@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TooltipExampleComponent implements OnInit {
   content = 'Main content';
+  mainTextColour: string;
+  mainTextSize: string;
   tooltiptext = 'Tooltip content';
   tooltipBackgroundColour: string;
   tooltipTextColour: string;
+  tooltipTextSize: string;
 
   constructor() { }
 

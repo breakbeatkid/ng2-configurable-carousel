@@ -1,6 +1,17 @@
 <div class="tooltip">
-  <ng-content select="[content]"></ng-content>
-  <div class="tooltiptext" [style.color]=tooltipTextColour [style.background-color]=tooltipBackgroundColour>
+  <div
+    class="main-content"
+    [style.color]="mainTextColour"
+    [style.font-size]="mainTextSize"
+  >
+    <ng-content select="[content]"></ng-content>
+  </div>
+  <div
+    class="tooltiptext"
+    [style.color]="tooltipTextColour"
+    [style.font-size]="tooltipTextSize"
+    [style.background-color]="tooltipBackgroundColour"
+  >
     <ng-content select="[tooltiptext]"></ng-content>
   </div>
 </div>

@@ -6,8 +6,11 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
   styleUrls: ['./tooltip.component.scss']
 })
 export class TooltipComponent implements OnInit, OnChanges {
+  @Input() mainTextColour: string;
+  @Input() mainTextSize: string;
   @Input() tooltipBackgroundColour: string;
   @Input() tooltipTextColour: string;
+  @Input() tooltipTextSize: string;
 
   constructor() { }
 
@@ -20,12 +23,24 @@ export class TooltipComponent implements OnInit, OnChanges {
   }
 
   private setDefaults() {
+    if (this.mainTextColour == null || this.mainTextColour === '') {
+      this.mainTextColour = 'inherit';
+    }
+
+    if (this.mainTextSize == null || this.mainTextSize === '') {
+      this.mainTextSize = 'inherit';
+    }
+
     if (this.tooltipBackgroundColour == null || this.tooltipBackgroundColour === '') {
-      this.tooltipBackgroundColour = 'black';
+      this.tooltipBackgroundColour = 'inherit';
     }
 
     if (this.tooltipTextColour == null || this.tooltipTextColour === '') {
-      this.tooltipTextColour = 'white';
+      this.tooltipTextColour = 'inherit';
+    }
+
+    if (this.tooltipTextSize == null || this.tooltipTextSize === '') {
+      this.tooltipTextSize = 'small';
     }
   }
 }

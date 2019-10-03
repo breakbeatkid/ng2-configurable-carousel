@@ -7,8 +7,11 @@
     <div class="title">Component:</div>
     <crowder-tooltip
       class="tooltip"
+      [mainTextColour]="mainTextColour"
+      [mainTextSize]="mainTextSize"
       [tooltipBackgroundColour]="tooltipBackgroundColour"
       [tooltipTextColour]="tooltipTextColour"
+      [tooltipTextSize]="tooltipTextSize"
     >
       <span content>{{ content }}</span>
       <span tooltiptext>{{ tooltiptext }}</span>
@@ -24,6 +27,18 @@
     </div>
 
     <div class="control">
+      <label>Main text colour:</label>
+      <input type="text" [(ngModel)]="mainTextColour" />
+    </div>
+
+    <div class="control">
+      <label>Main text size:</label>
+      <input type="text" [(ngModel)]="mainTextSize" />
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="control">
       <label>Tooltip content:</label>
       <input type="text" [(ngModel)]="tooltiptext" />
     </div>
@@ -37,6 +52,11 @@
       <label>Tooltip text colour:</label>
       <input type="text" [(ngModel)]="tooltipTextColour" />
     </div>
+
+    <div class="control">
+      <label>Tooltip text size:</label>
+      <input type="text" [(ngModel)]="tooltipTextSize" />
+    </div>
   </div>
 
   <div class="usage">
@@ -45,11 +65,29 @@
       <code>
         <span class="bracket">&lt;</span>
         <span class="tag">crowder-tooltip</span>
+        <div *ngIf="mainTextColour != null && mainTextColour != ''">
+          &nbsp;&nbsp;
+          <span class="param">[mainTextColour]</span>
+          =
+          <span class="var">'{{ mainTextColour }}'</span>
+        </div>
+        <div *ngIf="mainTextSize != null && mainTextSize != ''">
+          &nbsp;&nbsp;
+          <span class="param">[mainTextSize]</span>
+          =
+          <span class="var">'{{ mainTextSize }}'</span>
+        </div>
         <div *ngIf="tooltipTextColour != null && tooltipTextColour != ''">
           &nbsp;&nbsp;
           <span class="param">[tooltipTextColour]</span>
           =
           <span class="var">'{{ tooltipTextColour }}'</span>
+        </div>
+        <div *ngIf="tooltipTextSize != null && tooltipTextSize != ''">
+          &nbsp;&nbsp;
+          <span class="param">[tooltipTextSize]</span>
+          =
+          <span class="var">'{{ tooltipTextSize }}'</span>
         </div>
         <div *ngIf="tooltipBackgroundColour != null && tooltipBackgroundColour != ''">
           &nbsp;&nbsp;
@@ -61,7 +99,8 @@
         <div>
           &nbsp;&nbsp;
           <span class="bracket">&lt;</span>
-          <span class="tag">span </span><span class="param">content</span>
+          <span class="tag">span </span>
+          <span class="param">content</span>
           <span class="bracket">&gt;</span>
           {{ content }}
           <span class="bracket">&lt;</span>
@@ -71,7 +110,8 @@
         <div>
           &nbsp;&nbsp;
           <span class="bracket">&lt;</span>
-          <span class="tag">span </span><span class="param">tooltiptext</span>
+          <span class="tag">span </span>
+          <span class="param">tooltiptext</span>
           <span class="bracket">&gt;</span>
           {{ tooltiptext }}
           <span class="bracket">&lt;</span>
