@@ -43,19 +43,46 @@
     <div class="title">Usage:</div>
     <div class="code">
       <code>
-        &lt;crowder-alert
+        <span class="bracket">&lt;</span>
+        <span class="tag">crowder-tooltip</span>
         <div *ngIf="tooltipTextColour != null && tooltipTextColour != ''">
-          &nbsp;&nbsp;[tooltipTextColour]='{{ tooltipTextColour }}'
+          &nbsp;&nbsp;
+          <span class="param">[tooltipTextColour]</span>
+          =
+          <span class="var">'{{ tooltipTextColour }}'</span>
         </div>
         <div *ngIf="tooltipBackgroundColour != null && tooltipBackgroundColour != ''">
-          &nbsp;&nbsp;[tooltipBackgroundColour]='{{ tooltipBackgroundColour }}'
+          &nbsp;&nbsp;
+          <span class="param">[tooltipBackgroundColour]</span>
+          =
+          <span class="var">'{{ tooltipBackgroundColour }}'</span>
         </div>
-        &gt;
-        <div>&nbsp;&nbsp;&lt;span content&gt;{{ content }}&lt;/span&gt;</div>
+        <span class="bracket">&gt;</span>
         <div>
-          &nbsp;&nbsp;&lt;span tooltiptext&gt;{{ tooltiptext }}&lt;/span&gt;
+          &nbsp;&nbsp;
+          <span class="bracket">&lt;</span>
+          <span class="tag">span </span><span class="param">content</span>
+          <span class="bracket">&gt;</span>
+          {{ content }}
+          <span class="bracket">&lt;</span>
+          <span class="tag">/span</span>
+          <span class="bracket">&gt;</span>
         </div>
-        <div>&lt;/crowder-alert&gt;</div>
+        <div>
+          &nbsp;&nbsp;
+          <span class="bracket">&lt;</span>
+          <span class="tag">span </span><span class="param">tooltiptext</span>
+          <span class="bracket">&gt;</span>
+          {{ tooltiptext }}
+          <span class="bracket">&lt;</span>
+          <span class="tag">/span</span>
+          <span class="bracket">&gt;</span>
+        </div>
+        <div>
+          <span class="bracket">&lt;</span>
+          <span class="tag">/crowder-tooltip</span>
+          <span class="bracket">&gt;</span>
+        </div>
       </code>
     </div>
   </div>

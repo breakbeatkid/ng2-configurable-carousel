@@ -80,9 +80,26 @@
       min-width: 300px;
 
       code {
+        color: black;
         div {
           margin: 0;
           padding: 0;
+        }
+
+        .tag {
+          color: blue;
+        }
+
+        .bracket {
+          color: grey;
+        }
+
+        .param {
+          color: deepskyblue;
+        }
+
+        .var {
+          color: saddlebrown;
         }
       }
     }

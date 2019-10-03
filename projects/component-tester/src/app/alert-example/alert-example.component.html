@@ -121,35 +121,58 @@
     <div class="title">Usage:</div>
     <div class="code">
       <code>
-        &lt;crowder-alert
+        <span class='bracket'>&lt;</span><span class='tag'>crowder-alert</span>
         <div *ngIf="!iconEnabled">
-          &nbsp;&nbsp;[iconEnabled]={{ iconEnabled }}
+          <span class='param'>&nbsp;&nbsp;[iconEnabled]</span>
+          =
+          <span class='var'>{{ iconEnabled }}</span>
         </div>
         <div *ngIf="iconEnabled && iconType != null && iconType != ''">
-          &nbsp;&nbsp;[iconType]='{{ iconType }}'
+          <span class='param'>&nbsp;&nbsp;[iconType]</span>
+          =
+          <span class='var'>'{{ iconType }}'</span>
         </div>
         <div *ngIf="iconEnabled && iconColour != null && iconColour != ''">
-          &nbsp;&nbsp;[iconColour]='{{ iconColour }}'
+          <span class='param'>&nbsp;&nbsp;[iconColour]</span>
+          =
+          <span class='var'>'{{ iconColour }}'</span>
         </div>
         <div *ngIf="iconEnabled && iconAfterMessage">
-          &nbsp;&nbsp;[iconAfterMessage]={{ iconAfterMessage }}
+          <span class='param'>&nbsp;&nbsp;[iconAfterMessage]</span>
+          =
+          <span class='var'>{{ iconAfterMessage }}</span>
         </div>
         <div *ngIf="message != null && message != ''">
-          &nbsp;&nbsp;[message]='{{ message }}'
+          <span class='param'>&nbsp;&nbsp;[message]</span>
+          =
+          <span class='var'>'{{ message }}'</span>
         </div>
         <div *ngIf="messageSize != null && messageSize != ''">
-          &nbsp;&nbsp;[messageSize]='{{ messageSize }}'
+          <span class='param'>&nbsp;&nbsp;[messageSize]</span>
+          =
+          <span class='var'>'{{ messageSize }}'</span>
         </div>
         <div *ngIf="messageColour != null && messageColour != ''">
-          &nbsp;&nbsp;[messageColour]='{{ messageColour }}'
+          <span class='param'>&nbsp;&nbsp;[messageColour]</span>
+          =
+          <span class='var'>'{{ messageColour }}'</span>
         </div>
         <div *ngIf="!tooltipEnabled">
-          &nbsp;&nbsp;[tooltipEnabled]={{ tooltipEnabled }}
+          <span class='param'>&nbsp;&nbsp;[tooltipEnabled]</span>
+          =
+          <span class='var'>{{ tooltipEnabled }}</span>
         </div>
         <div *ngIf="tooltipEnabled && tooltipMessage != null && tooltipMessage != ''">
-          &nbsp;&nbsp;[tooltipMessage]='{{ tooltipMessage }}'
+          <span class='param'>&nbsp;&nbsp;[tooltipMessage]</span>
+          =
+          <span class='var'>'{{ tooltipMessage }}'</span>
         </div>
-        &gt;<br />&lt;/crowder-alert&gt;
+        <span class='bracket'>&gt;</span>
+        <div>
+          <span class='bracket'>&lt;</span>
+          <span class='tag'>/crowder-alert</span>
+          <span class='bracket'>&gt;</span>
+        </div>
       </code>
     </div>
   </div>
