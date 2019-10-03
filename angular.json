@@ -3,33 +3,33 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "components": {
+    "common-ui": {
       "projectType": "library",
-      "root": "projects/components",
-      "sourceRoot": "projects/components/src",
+      "root": "projects/common-ui",
+      "sourceRoot": "projects/common-ui/src",
       "prefix": "crowder",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/components/tsconfig.lib.json",
-            "project": "projects/components/ng-package.json"
+            "tsConfig": "projects/common-ui/tsconfig.lib.json",
+            "project": "projects/common-ui/ng-package.json"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/components/src/test.ts",
-            "tsConfig": "projects/components/tsconfig.spec.json",
-            "karmaConfig": "projects/components/karma.conf.js"
+            "main": "projects/common-ui/src/test.ts",
+            "tsConfig": "projects/common-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/common-ui/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/components/tsconfig.lib.json",
-              "projects/components/tsconfig.spec.json"
+              "projects/common-ui/tsconfig.lib.json",
+              "projects/common-ui/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -38,32 +38,32 @@
         }
       }
     },
-    "component-tester": {
+    "common-ui-tester": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/component-tester",
-      "sourceRoot": "projects/component-tester/src",
+      "root": "projects/common-ui-tester",
+      "sourceRoot": "projects/common-ui-tester/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/component-tester",
-            "index": "projects/component-tester/src/index.html",
-            "main": "projects/component-tester/src/main.ts",
-            "polyfills": "projects/component-tester/src/polyfills.ts",
-            "tsConfig": "projects/component-tester/tsconfig.app.json",
+            "outputPath": "dist/common-ui-tester",
+            "index": "projects/common-ui-tester/src/index.html",
+            "main": "projects/common-ui-tester/src/main.ts",
+            "polyfills": "projects/common-ui-tester/src/polyfills.ts",
+            "tsConfig": "projects/common-ui-tester/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/component-tester/src/favicon.ico",
-              "projects/component-tester/src/assets"
+              "projects/common-ui-tester/src/favicon.ico",
+              "projects/common-ui-tester/src/assets"
             ],
             "styles": [
-              "projects/component-tester/src/styles.scss"
+              "projects/common-ui-tester/src/styles.scss"
             ],
             "scripts": []
           },
@@ -71,8 +71,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/component-tester/src/environments/environment.ts",
-                  "with": "projects/component-tester/src/environments/environment.prod.ts"
+                  "replace": "projects/common-ui-tester/src/environments/environment.ts",
+                  "with": "projects/common-ui-tester/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -102,33 +102,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "component-tester:build"
+            "browserTarget": "common-ui-tester:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "component-tester:build:production"
+              "browserTarget": "common-ui-tester:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "component-tester:build"
+            "browserTarget": "common-ui-tester:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/component-tester/src/test.ts",
-            "polyfills": "projects/component-tester/src/polyfills.ts",
-            "tsConfig": "projects/component-tester/tsconfig.spec.json",
-            "karmaConfig": "projects/component-tester/karma.conf.js",
+            "main": "projects/common-ui-tester/src/test.ts",
+            "polyfills": "projects/common-ui-tester/src/polyfills.ts",
+            "tsConfig": "projects/common-ui-tester/tsconfig.spec.json",
+            "karmaConfig": "projects/common-ui-tester/karma.conf.js",
             "assets": [
-              "projects/component-tester/src/favicon.ico",
-              "projects/component-tester/src/assets"
+              "projects/common-ui-tester/src/favicon.ico",
+              "projects/common-ui-tester/src/assets"
             ],
             "styles": [
-              "projects/component-tester/src/styles.scss"
+              "projects/common-ui-tester/src/styles.scss"
             ],
             "scripts": []
           }
@@ -137,9 +137,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/component-tester/tsconfig.app.json",
-              "projects/component-tester/tsconfig.spec.json",
-              "projects/component-tester/e2e/tsconfig.json"
+              "projects/common-ui-tester/tsconfig.app.json",
+              "projects/common-ui-tester/tsconfig.spec.json",
+              "projects/common-ui-tester/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -149,12 +149,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/component-tester/e2e/protractor.conf.js",
-            "devServerTarget": "component-tester:serve"
+            "protractorConfig": "projects/common-ui-tester/e2e/protractor.conf.js",
+            "devServerTarget": "common-ui-tester:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "component-tester:serve:production"
+              "devServerTarget": "common-ui-tester:serve:production"
             }
           }
         }
@@ -195,5 +195,5 @@
         }
       }
     }},
-  "defaultProject": "components"
+  "defaultProject": "common-ui"
 }

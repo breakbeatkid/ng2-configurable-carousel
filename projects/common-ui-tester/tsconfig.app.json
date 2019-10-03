@@ -4,11 +4,11 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "@crowder/components": [
-        "dist/components"
+      "@crowder/common-ui": [
+        "dist/common-ui"
       ],
-      "@crowder/components/*": [
-        "dist/components/*"
+      "@crowder/common-ui/*": [
+        "dist/common-ui/*"
       ]
     }
   },
@@ -24,8 +24,8 @@
     "src/**/*.spec.ts"
   ],
   "paths": {
-    "@crowder/components": [
-      "dist/components"
+    "@crowder/common-ui": [
+      "dist/common-ui"
     ]
   }
 }

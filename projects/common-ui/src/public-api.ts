@@ -1,5 +1,5 @@
 /*
- * Public API Surface of components
+ * Public API Surface of common-ui
  */
 
 export * from './lib/tooltip/public-api';

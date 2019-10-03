@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { MdcTypographyModule } from '@angular-mdc/web';
 import { PanelModule } from '@crowder/panel';
 
-import { AlertModule } from '@crowder/components';
-import { TooltipModule } from '@crowder/components';
-import { CarouselModule } from '@crowder/components';
+import { AlertModule } from '@crowder/common-ui';
+import { TooltipModule } from '@crowder/common-ui';
+import { CarouselModule } from '@crowder/common-ui';
 
 import { AppComponent } from './app.component';
 import { AlertExampleComponent } from './alert-example/alert-example.component';
