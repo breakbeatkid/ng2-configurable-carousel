@@ -22,7 +22,6 @@
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
     "@angular/router": "~8.2.8",
-    "@crowder/panel": "0.0.1",
     "classlist.js": "^1.1.20150312",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
