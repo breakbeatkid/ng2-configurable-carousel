@@ -3,29 +3,127 @@
 </h2>
 
 <div class="example">
-  <div class="component">
+  <div class="component" [style.width]="componentWidth + '%'">
     <div class="title">Component:</div>
     <div class="carousel-holder">
-      <crowder-carousel class="carousel" [itemsDisplayed]="3">
-        <ng-container *carouselItem>
-          <div class="item">Item 1</div>
-        </ng-container>
-        <ng-container *carouselItem>
-          <div class="item">Item 2</div>
-        </ng-container>
-        <ng-container *carouselItem>
-          <div class="item">Item 3</div>
-        </ng-container>
-        <ng-container *carouselItem>
-          <div class="item">Item 4</div>
-        </ng-container>
-        <ng-container *carouselItem>
-          <div class="item">Item 5</div>
-        </ng-container>
-        <ng-container *carouselItem>
-          <div class="item">Item 6</div>
+      <crowder-carousel
+        class="carousel"
+        [infiniteScroll]="infiniteScroll"
+        [itemsDisplayed]="itemsDisplayed"
+      >
+        <ng-container *ngFor="let item of items">
+          <div *carouselItem class="item">{{ item.title }}</div>
         </ng-container>
       </crowder-carousel>
+    </div>
+  </div>
+  <div class="settings">
+    <div class="controls">
+      <div class="title">Configuration:</div>
+
+      <div class="control">
+        <label>Items displayed count dynamic :</label>
+        <div>
+          <label class="radio">True:</label>
+          <input
+            type="radio"
+            [(ngModel)]="dynamicDisplaySize"
+            name="dynamicDisplaySize"
+            [value]="true"
+          />
+          <label class="radio">False:</label>
+          <input
+            type="radio"
+            [(ngModel)]="dynamicDisplaySize"
+            name="dynamicDisplaySize"
+            [value]="false"
+          />
+        </div>
+      </div>
+
+      <div class="control" *ngIf="!dynamicDisplaySize">
+        <label>Items displayed count: {{ itemsDisplayed }}</label>
+        <mdc-slider
+          [min]="1"
+          [max]="numberOfItems"
+          [(ngModel)]="itemsDisplayed"
+        ></mdc-slider>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="control">
+        <label>Infinite scroll:</label>
+        <div>
+          <label class="radio">True:</label>
+          <input
+            type="radio"
+            [(ngModel)]="infiniteScroll"
+            name="infiniteScroll"
+            [value]="true"
+          />
+          <label class="radio">False:</label>
+          <input
+            type="radio"
+            [(ngModel)]="infiniteScroll"
+            name="infiniteScroll"
+            [value]="false"
+          />
+        </div>
+      </div>
+
+      <div class="divider"></div>
+    </div>
+    <div class="usage">
+      <div class="title">Usage:</div>
+      <div class="code">
+        <code>
+          <span class="bracket">&lt;</span>
+          <span class="tag">crowder-carousel</span>
+
+          <div *ngIf="!infiniteScroll">
+            <span class="param">&nbsp;&nbsp;[infiniteScroll]</span>
+            <span>=</span>
+            <span class="var">{{ infiniteScroll }}</span>
+          </div>
+
+          <div *ngIf="itemsDisplayed != null && itemsDisplayed > 0 && !dynamicDisplaySize">
+            <span class="param">&nbsp;&nbsp;[itemsDisplayed]</span>
+            <span>=</span>
+            <span class="var">{{ itemsDisplayed }}</span>
+          </div>
+
+          <span class="bracket">&gt;</span><br />
+
+          <span class="bracket">&nbsp;&nbsp;&lt;</span>
+          <span class="tag">div</span>
+          <span class="param"> *carouselItem class</span>
+          <span>=</span>
+          <span class="var">'item'</span>
+          <span class="bracket">&gt;</span>
+          <span>Item 1</span>
+          <span class="bracket">&lt;/</span>
+          <span class="tag">div</span>
+          <span class="bracket">&gt;</span><br />
+
+          <span class="bracket">&nbsp;&nbsp;&lt;</span>
+          <span class="tag">div</span>
+          <span class="param"> *carouselItem class</span>
+          <span>=</span>
+          <span class="var">'item'</span>
+          <span class="bracket">&gt;</span>
+          <span>Item 2</span>
+          <span class="bracket">&lt;/</span>
+          <span class="tag">div</span>
+          <span class="bracket">&gt;</span><br />
+
+          <div>&nbsp;&nbsp;...</div>
+
+          <span class="bracket">&lt;/</span>
+          <span class="tag">crowder-carousel</span>
+          <span class="bracket">&gt;</span>
+        </code>
+      </div>
     </div>
   </div>
 </div>
