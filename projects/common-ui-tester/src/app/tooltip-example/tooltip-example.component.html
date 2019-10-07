@@ -68,31 +68,31 @@
         <div *ngIf="mainTextColour != null && mainTextColour != ''">
           &nbsp;&nbsp;
           <span class="param">[mainTextColour]</span>
-          =
+          <span>=</span>
           <span class="var">'{{ mainTextColour }}'</span>
         </div>
         <div *ngIf="mainTextSize != null && mainTextSize != ''">
           &nbsp;&nbsp;
           <span class="param">[mainTextSize]</span>
-          =
+          <span>=</span>
           <span class="var">'{{ mainTextSize }}'</span>
         </div>
         <div *ngIf="tooltipTextColour != null && tooltipTextColour != ''">
           &nbsp;&nbsp;
           <span class="param">[tooltipTextColour]</span>
-          =
+          <span>=</span>
           <span class="var">'{{ tooltipTextColour }}'</span>
         </div>
         <div *ngIf="tooltipTextSize != null && tooltipTextSize != ''">
           &nbsp;&nbsp;
           <span class="param">[tooltipTextSize]</span>
-          =
+          <span>=</span>
           <span class="var">'{{ tooltipTextSize }}'</span>
         </div>
         <div *ngIf="tooltipBackgroundColour != null && tooltipBackgroundColour != ''">
           &nbsp;&nbsp;
           <span class="param">[tooltipBackgroundColour]</span>
-          =
+          <span>=</span>
           <span class="var">'{{ tooltipBackgroundColour }}'</span>
         </div>
         <span class="bracket">&gt;</span>
@@ -102,9 +102,9 @@
           <span class="tag">span </span>
           <span class="param">content</span>
           <span class="bracket">&gt;</span>
-          {{ content }}
-          <span class="bracket">&lt;</span>
-          <span class="tag">/span</span>
+          <span>{{ content }}</span>
+          <span class="bracket">&lt;/</span>
+          <span class="tag">span</span>
           <span class="bracket">&gt;</span>
         </div>
         <div>
@@ -113,14 +113,14 @@
           <span class="tag">span </span>
           <span class="param">tooltiptext</span>
           <span class="bracket">&gt;</span>
-          {{ tooltiptext }}
-          <span class="bracket">&lt;</span>
-          <span class="tag">/span</span>
+          <span>{{ tooltiptext }}</span>
+          <span class="bracket">&lt;/</span>
+          <span class="tag">span</span>
           <span class="bracket">&gt;</span>
         </div>
         <div>
-          <span class="bracket">&lt;</span>
-          <span class="tag">/crowder-tooltip</span>
+          <span class="bracket">&lt;/</span>
+          <span class="tag">crowder-tooltip</span>
           <span class="bracket">&gt;</span>
         </div>
       </code>
