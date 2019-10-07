@@ -10,7 +10,8 @@ nav {
   width: 100%;
   height: $nav-height;
   z-index: 2;
-  background-color: $crowder-brand;
+  // background-color: $crowder-brand;
+  background-image: linear-gradient(to left bottom, #f58220, #ea7919, #e07111);
   display: flex;
 
   .title {

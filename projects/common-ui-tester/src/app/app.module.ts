@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { MdcTypographyModule, MdcSliderModule  } from '@angular-mdc/web';
+import { MdcTypographyModule, MdcSliderModule, MdcElevationModule   } from '@angular-mdc/web';
 import { PanelModule } from '@crowder/panel';
 
 import { AlertModule } from '@crowder/common-ui';
@@ -30,6 +30,7 @@ import { CarouselExampleComponent } from './carousel-example/carousel-example.co
     AlertModule,
     TooltipModule,
     CarouselModule,
+    MdcElevationModule,
     MdcTypographyModule,
     MdcSliderModule
   ],
