@@ -1,7 +1,6 @@
 import {
   animate,
   AnimationBuilder,
-  AnimationFactory,
   AnimationPlayer,
   style,
 } from '@angular/animations';
@@ -12,10 +11,10 @@ import {
   ContentChildren,
   ElementRef,
   HostListener,
+  Input,
   QueryList,
   ViewChild,
   ViewChildren,
-  Input,
 } from '@angular/core';
 
 import { CarouselItemDirective } from './carousel-item.directive';
@@ -32,37 +31,54 @@ export class CarouselComponent implements AfterViewInit {
   @ViewChildren(CarouselItemElementDirective, { read: ElementRef }) private itemsElements: QueryList<ElementRef>;
   @ViewChild('carousel', { static: true }) private carousel: ElementRef;
 
-  @Input() itemsDisplayed = 11;
-  @Input() timing = '200ms ease-in';
+  @Input() itemsDisplayed: number;
+  @Input() infiniteScroll: boolean;
+  @Input() animationDuration = '200';
+  @Input() animationType = 'ease-in';
 
-  carouselWrapperStyle = {};
+  public carouselWrapperStyle = {};
 
+  private parent: any;
   private player: AnimationPlayer;
   private itemWidth: number;
   private currentSlide = 0;
   private animating = false;
+  private timing: string;
+  private noAnimationDuration = 0;
+  private carouselPadding = 20;
 
-  constructor(private builder: AnimationBuilder) { }
+  constructor(private builder: AnimationBuilder, private elementRef: ElementRef) {
+    this.parent = this.elementRef.nativeElement.parentElement;
+  }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
+    this.timing = `${this.animationDuration}ms ${this.animationType}`;
     this.reSizeCarousel();
   }
 
-  @HostListener('window:resize', ['$event']) onResize(event: any) {
+  @HostListener('window:resize', ['$event']) onResize(event: any): void {
     this.reSizeCarousel();
   }
 
-  next() {
+  next(): void {
+    if (this.infiniteScroll != null && this.infiniteScroll === true) {
+      this.infiniteNext();
+    } else {
+      this.nonInfiniteNext();
+    }
+  }
+
+  private infiniteNext(): void {
     if (this.animating) {
       return;
     }
 
     let onComplete: () => void;
-    if (this.currentSlide + this.arraySize() === this.items.length || this.noOverlap()) {
+    if (this.shuffleLeftRequired()) {
       this.animating = true;
-      this.copyCarouselItemEndToEnd(true);
+      this.copyStartItemToEnd();
       onComplete = () => {
-        this.dropEndCarouselItem(true);
+        this.dropStartItem();
         this.animating = false;
       };
     }
@@ -70,17 +86,32 @@ export class CarouselComponent implements AfterViewInit {
     this.transitionCarousel(this.timing, onComplete);
   }
 
-  prev() {
+  private nonInfiniteNext(): void {
+    if (this.currentSlide + this.carouselItemCount() < this.items.length) {
+      this.currentSlide++;
+      this.transitionCarousel(this.timing);
+    }
+  }
+
+  prev(): void {
+    if (this.infiniteScroll) {
+      this.infinitePrev();
+    } else {
+      this.nonInfinitePrev();
+    }
+  }
+
+  private infinitePrev(): void {
     if (this.animating) {
       return;
     }
 
     let onComplete: () => void;
-    if (this.currentSlide === 0 || this.noOverlap()) {
+    if (this.shuffleRightRequired()) {
       this.animating = true;
-      this.copyCarouselItemEndToEnd(false);
+      this.copyEndItemToStart();
       onComplete = () => {
-        this.dropEndCarouselItem(false);
+        this.dropEndItem();
         this.animating = false;
       };
     }
@@ -88,61 +119,76 @@ export class CarouselComponent implements AfterViewInit {
     this.transitionCarousel(this.timing, onComplete);
   }
 
-  private dropEndCarouselItem(start: boolean): void {
-    // Copy carousel DOM items to array
-    const arr = this.items.toArray();
-    if (start) {
-      // Drop item at index 0, reset DOM and shift carousel
-      arr.shift();
-      this.items.reset(arr);
+  private nonInfinitePrev(): void {
+    if (this.currentSlide > 0) {
       this.currentSlide--;
-      this.transitionCarousel();
-    } else {
-      // Drop item at end of array and reset DOM
-      arr.pop();
-      this.items.reset(arr);
+      this.transitionCarousel(this.timing);
     }
   }
 
-  private copyCarouselItemEndToEnd(start: boolean) {
+  private copyStartItemToEnd(): void {
     let arr = this.items.toArray();
-    if (start) {
-      // Copy item at index 0 to end of array and reset DOM
-      arr = arr.concat(arr[0]);
-      this.items.reset(arr);
-    } else {
-      // Copy item at end of array to index 0, reset DOM and shift carousel
-      arr = [arr[arr.length - 1]].concat(arr);
-      this.items.reset(arr);
-      this.currentSlide++;
-      this.transitionCarousel();
-    }
+    arr = arr.concat(arr[0]);
+    this.items.reset(arr);
+  }
+
+  private copyEndItemToStart(): void {
+    let arr = this.items.toArray();
+    arr = [arr[arr.length - 1]].concat(arr);
+    this.items.reset(arr);
+    this.currentSlide++;
+    this.transitionCarousel();
+  }
+
+  private dropStartItem(): void {
+    const arr = this.items.toArray();
+    arr.shift();
+    this.items.reset(arr);
+    this.currentSlide--;
+    this.transitionCarousel();
+  }
+
+  private dropEndItem(): void {
+    const arr = this.items.toArray();
+    arr.pop();
+    this.items.reset(arr);
   }
 
   private reSizeCarousel(): void {
     this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
     this.carouselWrapperStyle = {
-      width: `${this.itemWidth * this.arraySize()}px`,
+      width: `${this.itemWidth * this.carouselItemCount()}px`,
     };
-    this.transitionCarousel(this.timing);
+    this.transitionCarousel();
   }
 
-  private transitionCarousel(time?: string, onDone?: () => void) {
+  private carouselItemCount(): number {
+    let displayed = this.itemsDisplayed;
+    if (displayed == null) {
+      const carouselWidth = this.parent.getBoundingClientRect().width;
+      displayed = Math.floor((carouselWidth - this.carouselPadding) / this.itemWidth);
+    }
+    return ((this.items.length < displayed) ? this.items.length : displayed);
+  }
+
+  private transitionCarousel(time?: string, onDone?: () => void): void {
+    const t = (time != null) ? time : this.noAnimationDuration;
     const offset = this.currentSlide * this.itemWidth;
-    const myAnimation: AnimationFactory = this.buildAnimation(offset, time);
-    this.player = myAnimation.create(this.carousel.nativeElement);
+
+    this.player = this.builder.build([
+      animate(t, style({ transform: `translateX(${-offset}px)` }))
+    ]).create(this.carousel.nativeElement);
     this.player.onDone((onDone !== undefined) ? onDone : () => null);
+
     this.player.play();
   }
 
-  private arraySize(): number {
-    return ((this.items.length < this.itemsDisplayed) ? this.items.length : this.itemsDisplayed);
+  private shuffleLeftRequired(): boolean {
+    return this.currentSlide + this.carouselItemCount() === this.items.length || this.noOverlap();
   }
 
-  private buildAnimation(offset: any, time: string) {
-    return this.builder.build([
-      animate(time !== undefined ? time : 0, style({ transform: `translateX(${-offset}px)` }))
-    ]);
+  private shuffleRightRequired(): boolean {
+    return this.currentSlide === 0 || this.noOverlap();
   }
 
   private noOverlap(): boolean {
