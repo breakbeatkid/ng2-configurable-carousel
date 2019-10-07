@@ -12,6 +12,7 @@ import {
   ElementRef,
   HostListener,
   Input,
+  OnChanges,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -26,13 +27,13 @@ import { CarouselItemElementDirective } from './carousel-item-element.directive'
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent implements AfterViewInit {
+export class CarouselComponent implements AfterViewInit, OnChanges {
   @ContentChildren(CarouselItemDirective) items: QueryList<CarouselItemDirective>;
   @ViewChildren(CarouselItemElementDirective, { read: ElementRef }) private itemsElements: QueryList<ElementRef>;
   @ViewChild('carousel', { static: true }) private carousel: ElementRef;
 
   @Input() itemsDisplayed: number;
-  @Input() infiniteScroll: boolean;
+  @Input() infiniteScroll = true;
   @Input() animationDuration = '200';
   @Input() animationType = 'ease-in';
 
@@ -46,6 +47,7 @@ export class CarouselComponent implements AfterViewInit {
   private timing: string;
   private noAnimationDuration = 0;
   private carouselPadding = 20;
+  private initialised = false;
 
   constructor(private builder: AnimationBuilder, private elementRef: ElementRef) {
     this.parent = this.elementRef.nativeElement.parentElement;
@@ -54,10 +56,18 @@ export class CarouselComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.timing = `${this.animationDuration}ms ${this.animationType}`;
     this.reSizeCarousel();
+    this.initialised = true;
   }
 
   @HostListener('window:resize', ['$event']) onResize(event: any): void {
     this.reSizeCarousel();
+  }
+
+  ngOnChanges() {
+    console.log('Changes');
+    if (this.initialised) {
+      this.reSizeCarousel();
+    }
   }
 
   next(): void {

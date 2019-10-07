@@ -9,10 +9,10 @@
       <crowder-carousel
         class="carousel"
         [infiniteScroll]="infiniteScroll"
-        [itemsDisplayed]="itemsDisplayed"
+        [itemsDisplayed]="(dynamicDisplaySize) ? undefined : itemsDisplayed"
       >
         <ng-container *ngFor="let item of items">
-          <div *carouselItem class="item">{{ item.title }}</div>
+          <div *carouselItem [mdcElevation]="3" class="item">{{ item.title }}</div>
         </ng-container>
       </crowder-carousel>
     </div>

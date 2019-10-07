@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MdcTypographyModule, MdcSliderModule, MdcElevationModule   } from '@angular-mdc/web';
-import { PanelModule } from '@crowder/panel';
 
 import { AlertModule } from '@crowder/common-ui';
 import { TooltipModule } from '@crowder/common-ui';
@@ -26,7 +25,6 @@ import { CarouselExampleComponent } from './carousel-example/carousel-example.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    PanelModule,
     AlertModule,
     TooltipModule,
     CarouselModule,
