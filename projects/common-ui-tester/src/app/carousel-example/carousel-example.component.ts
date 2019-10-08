@@ -23,6 +23,6 @@ export class CarouselExampleComponent {
     for (let i = 1; i <= this.numberOfItems; i++) {
       this.items.push({ title: `Item ${i}` });
     }
-    this.itemsDisplayed = this.items.length;
+    this.itemsDisplayed = 5;
   }
 }
