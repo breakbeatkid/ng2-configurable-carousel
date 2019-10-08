@@ -64,18 +64,19 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('Changes');
     if (this.initialised) {
       this.reSizeCarousel();
     }
   }
 
   next(): void {
+    console.log(`Current Slide Before Change: ${this.currentSlide}`);
     if (this.infiniteScroll != null && this.infiniteScroll === true) {
       this.infiniteNext();
     } else {
       this.nonInfiniteNext();
     }
+    console.log(`Current Slide After Change: ${this.currentSlide}`);
   }
 
   private infiniteNext(): void {
@@ -104,11 +105,13 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   }
 
   prev(): void {
+    console.log(`Current Slide Before Change: ${this.currentSlide}`);
     if (this.infiniteScroll) {
       this.infinitePrev();
     } else {
       this.nonInfinitePrev();
     }
+    console.log(`Current Slide After Change: ${this.currentSlide}`);
   }
 
   private infinitePrev(): void {
