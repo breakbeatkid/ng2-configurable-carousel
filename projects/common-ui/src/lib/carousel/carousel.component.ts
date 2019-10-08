@@ -139,6 +139,15 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
     }
   }
 
+  private moveStartItemToEnd(): void {
+    let arr = this.items.toArray();
+    const first = arr.shift();
+    arr = arr.concat([first]);
+    this.items.reset(arr);
+    this.currentSlide--;
+    this.transitionCarousel();
+  }
+
   private copyStartItemToEnd(): void {
     let arr = this.items.toArray();
     arr = arr.concat(arr[0]);
@@ -169,8 +178,14 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
 
   private reSizeCarousel(): void {
     this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+    const itemCount = this.carouselItemCount();
+
+    if (this.currentSlide + itemCount > this.items.length) {
+      this.moveStartItemToEnd();
+    }
+
     this.carouselWrapperStyle = {
-      width: `${this.itemWidth * this.carouselItemCount()}px`,
+      width: `${this.itemWidth * itemCount}px`,
     };
     this.transitionCarousel();
   }
@@ -207,4 +222,5 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   private noOverlap(): boolean {
     return this.items.length === this.itemsDisplayed;
   }
+
 }
