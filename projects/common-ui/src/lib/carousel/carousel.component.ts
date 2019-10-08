@@ -64,18 +64,19 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges() {
-    console.log('Changes');
     if (this.initialised) {
       this.reSizeCarousel();
     }
   }
 
   next(): void {
+    console.log(`Current Slide Before Change: ${this.currentSlide}`);
     if (this.infiniteScroll != null && this.infiniteScroll === true) {
       this.infiniteNext();
     } else {
       this.nonInfiniteNext();
     }
+    console.log(`Current Slide After Change: ${this.currentSlide}`);
   }
 
   private infiniteNext(): void {
@@ -104,11 +105,13 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   }
 
   prev(): void {
+    console.log(`Current Slide Before Change: ${this.currentSlide}`);
     if (this.infiniteScroll) {
       this.infinitePrev();
     } else {
       this.nonInfinitePrev();
     }
+    console.log(`Current Slide After Change: ${this.currentSlide}`);
   }
 
   private infinitePrev(): void {
@@ -134,6 +137,15 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
       this.currentSlide--;
       this.transitionCarousel(this.timing);
     }
+  }
+
+  private moveStartItemToEnd(): void {
+    let arr = this.items.toArray();
+    const first = arr.shift();
+    arr = arr.concat([first]);
+    this.items.reset(arr);
+    this.currentSlide--;
+    this.transitionCarousel();
   }
 
   private copyStartItemToEnd(): void {
@@ -166,8 +178,14 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
 
   private reSizeCarousel(): void {
     this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+    const itemCount = this.carouselItemCount();
+
+    if (this.currentSlide + itemCount > this.items.length) {
+      this.moveStartItemToEnd();
+    }
+
     this.carouselWrapperStyle = {
-      width: `${this.itemWidth * this.carouselItemCount()}px`,
+      width: `${this.itemWidth * itemCount}px`,
     };
     this.transitionCarousel();
   }
@@ -204,4 +222,5 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   private noOverlap(): boolean {
     return this.items.length === this.itemsDisplayed;
   }
+
 }
